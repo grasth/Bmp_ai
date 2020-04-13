@@ -52,6 +52,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,7 +91,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(290, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(140, 70);
+            this.groupBox1.Size = new System.Drawing.Size(153, 70);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PICTURE INFO";
@@ -98,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 33);
+            this.label2.Location = new System.Drawing.Point(6, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 0;
@@ -106,13 +107,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(290, 88);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(140, 95);
+            this.groupBox2.Size = new System.Drawing.Size(153, 95);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Результат";
@@ -144,7 +146,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 32);
+            this.label5.Location = new System.Drawing.Point(6, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 1;
@@ -296,6 +298,15 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Количество образов: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +370,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label3;
     }
 }
 

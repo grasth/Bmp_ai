@@ -97,8 +97,6 @@ namespace Bmp_ai
                 neironArray.Add(neiron);
             }
             int countTrainig = neiron.Training(data);
-           //label3.Text = $"Имя образа -  {neiron.GetName()} вариантов образа в памяти - {countTrainig.ToString();
-
         }
 
 

@@ -55,7 +55,6 @@ namespace Bmp_ai
         // добавить входной образ в память массива
         public int Training(int[,] data)
         {
-            // проверим что массив существует и тех же размеров что и массив памяти
             if (data == null || veight.GetLength(0) != data.GetLength(0) || veight.GetLength(1) != data.GetLength(1)) return countTrainig;
             countTrainig++;
             for (int n = 0; n < veight.GetLength(0); n++)
