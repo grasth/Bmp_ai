@@ -273,16 +273,17 @@
             this.button6.TabIndex = 1;
             this.button6.Text = "train!";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_train);
             // 
             // button5
             // 
-            this.button5.Enabled = false;
             this.button5.Location = new System.Drawing.Point(33, 89);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(183, 23);
             this.button5.TabIndex = 0;
             this.button5.Text = "Path for example ai";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_patch_for_train);
             // 
             // button7
             // 

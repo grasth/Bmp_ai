@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bmp_ai
@@ -9,6 +10,7 @@ namespace Bmp_ai
         private NeiroWeb nw;
         private int[,] arr;
         private Point startP;
+        public string path = string.Empty;
 
         public Form1()
         {
@@ -143,6 +145,20 @@ namespace Bmp_ai
         private void button7_Click(object sender, EventArgs e)
         {
             NeiroGraphUtils.ClearImage(pictureBox1);
+        }
+
+        private void button5_patch_for_train(object sender, EventArgs e)
+        {
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            if (FBD.ShowDialog() == DialogResult.OK)
+            {
+                label6.Text = FBD.SelectedPath;
+            }
+        }
+
+        private void button6_train(object sender, EventArgs e)
+        {
+
         }
     }
 }
