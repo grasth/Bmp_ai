@@ -21,7 +21,7 @@ namespace Bmp_ai
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
-            pictureBox3.Image = Image.FromFile(ofd.FileName);
+            pictureBox4.Image = Image.FromFile(ofd.FileName);
         }
 
             private void SelectPicture(object sender, EventArgs args)
@@ -39,7 +39,7 @@ namespace Bmp_ai
         {
             int[,] clipArr = NeiroGraphUtils.CutImageToArray((Bitmap)pictureBox1.Image, new Point(pictureBox1.Width, pictureBox1.Height));
 
-            //int[,] clipArr = NeiroGraphUtils.CutImageToArray((Bitmap)pictureBox3.Image, new Point(pictureBox3.Width, pictureBox3.Height));
+            //int[,] clipArr = NeiroGraphUtils.CutImageToArray((Bitmap)pictureBox4.Image, new Point(pictureBox4.Width, pictureBox4.Height));
 
             if (clipArr == null)
                 return;
@@ -55,7 +55,6 @@ namespace Bmp_ai
                 s = "idk";
 
             label7.Text = $"{s}";
-            label3.Text = $"Количество образов: {nw.countTrainig}";
         }
 
         private void AddSymbolToList(string symbol)
@@ -65,9 +64,7 @@ namespace Bmp_ai
                 MessageBox.Show("Значение не может иметь длину 0 символов.");
                 return;
             }
-            comboBox1.Items.Add(symbol);
-            comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
-            MessageBox.Show("Сейчас значение '" + symbol + "' в списке, теперь можно научить нейросеть сеть его распознавать.");
+            MessageBox.Show($"Образ для символа: {symbol} добавлен.");
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -124,6 +121,7 @@ namespace Bmp_ai
                         return;
                     }
                     comboBox1.Items.Add(litera);
+                    comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
                     nw.SetTraining(litera, arr);
                     nw.SaveState();
                 }

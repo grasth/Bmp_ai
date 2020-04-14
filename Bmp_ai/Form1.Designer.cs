@@ -34,7 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,8 +53,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -110,7 +113,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.label5);
@@ -122,14 +124,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Результат";
             // 
-            // label3
+            // label7
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Количество образов: ";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(77, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 13);
+            this.label7.TabIndex = 5;
             // 
             // button4
             // 
@@ -158,7 +159,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 18);
+            this.label5.Location = new System.Drawing.Point(6, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 1;
@@ -310,18 +311,9 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(77, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 13);
-            this.label7.TabIndex = 5;
-            // 
             // button8
             // 
-            this.button8.Enabled = false;
-            this.button8.Location = new System.Drawing.Point(18, 196);
+            this.button8.Location = new System.Drawing.Point(184, 228);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(158, 23);
             this.button8.TabIndex = 14;
@@ -329,13 +321,33 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.SelectPicture_file);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.pictureBox4);
+            this.groupBox6.Location = new System.Drawing.Point(12, 209);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(164, 171);
+            this.groupBox6.TabIndex = 15;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "image_box";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.MintCream;
+            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(152, 143);
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(866, 189);
+            this.ClientSize = new System.Drawing.Size(866, 190);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox5);
@@ -363,6 +375,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,9 +407,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 
