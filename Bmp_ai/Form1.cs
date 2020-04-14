@@ -124,6 +124,7 @@ namespace Bmp_ai
                     comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
                     nw.SetTraining(litera, arr);
                     nw.SaveState();
+                    MessageBox.Show($"Символ {textBox1.Text} добавлен в память.");
                 }
             }
             catch (Exception err)

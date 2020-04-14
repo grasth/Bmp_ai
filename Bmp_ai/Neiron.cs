@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace Bmp_ai
 {
-
-    // это класс нейрона, каждый нейрон хранит в себе массив определённого образа
-    // он может обучаться и сравнивать значение с имеющимся в памяти
-
     public class Neiron
     {
         public string name;
@@ -36,18 +32,15 @@ namespace Bmp_ai
         // на образ из памяти нейрона
         public double GetRes(int[,] data)
         {
-            if (veight.GetLength(0) != data.GetLength(0) || veight.GetLength(1) != data.GetLength(1)) return -1;
+            if (veight.GetLength(0) != data.GetLength(0) || veight.GetLength(1) != data.GetLength(1))
+                return -1;
+
             double res = 0;
             for (int n = 0; n < veight.GetLength(0); n++)
                 for (int m = 0; m < veight.GetLength(1); m++)
-                    res += 1 - Math.Abs(veight[n, m] - data[n, m]);  // в этой строке мы считаем отклонения 
-                                                                     // каждого элемента входного массива от 
-                                                                     // усреднённого значения из памяти
+                    res += 1 - Math.Abs(veight[n, m] - data[n, m]);  
 
-            return res / (veight.GetLength(0) * veight.GetLength(1));// возвращем среднее арифметическое отклонение по массиву
-                                                                     // на самом деле эта операция не обязательная
-                                                                     // но в теории должна дать лучшую стабильность
-                                                                     // при большом количестве образов
+            return res / (veight.GetLength(0) * veight.GetLength(1));
         }
 
         // добавить входной образ в память массива
@@ -63,7 +56,7 @@ namespace Bmp_ai
                     if (veight[n, m] > 1) veight[n, m] = 1; // значение памяти не может быть больше 1
                     if (veight[n, m] < 0) veight[n, m] = 0; // значение памяти не может быть меньше 0
                 }
-            return countTrainig; // вернуть количество обучений
+            return countTrainig;
         }
 
     }

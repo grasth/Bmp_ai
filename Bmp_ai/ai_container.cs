@@ -11,10 +11,10 @@ namespace Bmp_ai
     {
 
         public int countTrainig = 0;
-        public const int neironInArrayWidth = 50; // количество по горизонтали
-        public const int neironInArrayHeight = 50; // количество по вертикали
-        private const string memory = "train_bmp_ai_memory.txt"; // имя файла хранения сети
-        private List<Neiron> neironArray = null; // массив нейронов
+        public const int neironInArrayWidth = 50;
+        public const int neironInArrayHeight = 50;
+        private const string memory = "train_bmp_ai_memory.txt";
+        private List<Neiron> neironArray = null;
 
         public NeiroWeb()
         {
@@ -78,7 +78,6 @@ namespace Bmp_ai
             file.Close();
         }
 
-        // получить список имён образов, имеющихся в памяти
         public string[] GetLiteras()
         {
             var res = new List<string>();
@@ -87,8 +86,6 @@ namespace Bmp_ai
 
             return res.ToArray();
         }
-
-        // эта функция заносит в память нейрона с именем trainingName
 
         public void SetTraining(string trainingName, int[,] data)
         {
