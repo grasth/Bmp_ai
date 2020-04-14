@@ -12,10 +12,9 @@ namespace Bmp_ai
 
     public class Neiron
     {
-        public string name; // имя - текстовое значение образа который хранит нейрон
-        public double[,] veight; // массив весов - именно это и есть память нейрона
-        public int countTrainig; // количество вариантов образа в памяти
-                                 // нужно для правильного пересчёта весов при обучении
+        public string name;
+        public double[,] veight;
+        public int countTrainig;
 
         // конструктор
         public Neiron() { }
@@ -33,8 +32,7 @@ namespace Bmp_ai
             countTrainig = 0;
         }
 
-        // функция возвращает сумму величин отклонения входного массива от эталонного
-        // другими словами чем результат ближе к 1це тем больше похож входной массив 
+        // результат ближе к 1це тем больше похож входной массив 
         // на образ из памяти нейрона
         public double GetRes(int[,] data)
         {
@@ -60,10 +58,7 @@ namespace Bmp_ai
             for (int n = 0; n < veight.GetLength(0); n++)
                 for (int m = 0; m < veight.GetLength(1); m++)
                 {
-                    // на всякий случай приведём значение элемента входного массива к дискретному
                     double v = data[n, m] == 0 ? 0 : 1;
-                    // вот сейчас будет самая главная строчка
-                    // каждый элемент в памяти пересчитывается с учетом значения из data
                     veight[n, m] += 2 * (v - 0.5f) / countTrainig;
                     if (veight[n, m] > 1) veight[n, m] = 1; // значение памяти не может быть больше 1
                     if (veight[n, m] < 0) veight[n, m] = 0; // значение памяти не может быть меньше 0

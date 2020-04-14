@@ -10,8 +10,9 @@ namespace Bmp_ai
     class NeiroWeb
     {
 
-        public const int neironInArrayWidth = 10; // количество по горизонтали
-        public const int neironInArrayHeight = 10; // количество по вертикали
+        public int countTrainig = 0;
+        public const int neironInArrayWidth = 50; // количество по горизонтали
+        public const int neironInArrayHeight = 50; // количество по вертикали
         private const string memory = "train_bmp_ai_memory.txt"; // имя файла хранения сети
         private List<Neiron> neironArray = null; // массив нейронов
 
@@ -34,9 +35,11 @@ namespace Bmp_ai
 
         private static Neiron NeironCreate(Dictionary<string, object> o)
         {
-            Neiron res = new Neiron();
-            res.name = (string)o["name"];
-            res.countTrainig = (int)o["countTrainig"];
+            Neiron res = new Neiron
+            {
+                name = (string)o["name"],
+                countTrainig = (int)o["countTrainig"]
+            };
             Object[] veightData = (Object[])o["veight"];
             int arrSize = (int)Math.Sqrt(veightData.Length);
             res.veight = new double[arrSize, arrSize];
@@ -96,9 +99,7 @@ namespace Bmp_ai
                 neiron.Clear(trainingName, neironInArrayWidth, neironInArrayHeight);
                 neironArray.Add(neiron);
             }
-            int countTrainig = neiron.Training(data);
+            countTrainig = neiron.Training(data);
         }
-
-
     }
 }

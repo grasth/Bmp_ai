@@ -16,7 +16,15 @@ namespace Bmp_ai
             InitializeComponent();
         }
 
-        private void SelectPicture(object sender, EventArgs args)
+        private void SelectPicture_file(object sender, EventArgs args)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.Cancel)
+                return;
+            pictureBox3.Image = Image.FromFile(ofd.FileName);
+        }
+
+            private void SelectPicture(object sender, EventArgs args)
         {
             if (pictureBox1.Image != null)
             {
@@ -24,23 +32,30 @@ namespace Bmp_ai
                 button4.Enabled = !button4.Enabled;
             }
             label2.Text = $"File: none";
-            nw = new NeiroWeb();
             Learn();
         }
 
         private void Learn()
         {
             int[,] clipArr = NeiroGraphUtils.CutImageToArray((Bitmap)pictureBox1.Image, new Point(pictureBox1.Width, pictureBox1.Height));
-            if (clipArr == null) return;
+
+            //int[,] clipArr = NeiroGraphUtils.CutImageToArray((Bitmap)pictureBox3.Image, new Point(pictureBox3.Width, pictureBox3.Height));
+
+            if (clipArr == null)
+                return;
+
             arr = NeiroGraphUtils.LeadArray(clipArr, new int[NeiroWeb.neironInArrayWidth, NeiroWeb.neironInArrayHeight]);
             pictureBox3.Image = NeiroGraphUtils.GetBitmapFromArr(clipArr);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.Image = NeiroGraphUtils.GetBitmapFromArr(arr);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+
             string s = nw.CheckLitera(arr);
-            if (s == null) s = "null";
-            label5.Text = $"Result: {s}";
-            nw.SetTraining(s, arr);
+            if (s == null)
+                s = "idk";
+
+            label7.Text = $"{s}";
+            label3.Text = $"Количество образов: {nw.countTrainig}";
         }
 
         private void AddSymbolToList(string symbol)
@@ -91,20 +106,27 @@ namespace Bmp_ai
         {
             try
             {
-                AddSymbolToList(textBox1.Text);
+                string litera = textBox1.Text;
                 textBox1.Enabled = !textBox1.Enabled;
                 button2.Enabled = !button2.Enabled;
-                string litera = textBox1.Text;
-                if (litera.Length == 0)
+
+                if (comboBox1.Items.Contains(textBox1.Text))
                 {
-                    return;
+                    AddSymbolToList(textBox1.Text);
+                    nw.SetTraining(textBox1.Text, arr);
+                    nw.SaveState();
+                    picturebox_clean();
                 }
-                nw.SetTraining(litera, arr);
-                nw.SaveState();
-                NeiroGraphUtils.ClearImage(pictureBox1);
-                NeiroGraphUtils.ClearImage(pictureBox2);
-                NeiroGraphUtils.ClearImage(pictureBox3);
-                MessageBox.Show("Выбранный символ '" + litera + "' успешно добавлен в память сети");
+                else
+                {
+                    if (litera.Length == 0)
+                    {
+                        return;
+                    }
+                    comboBox1.Items.Add(litera);
+                    nw.SetTraining(litera, arr);
+                    nw.SaveState();
+                }
             }
             catch (Exception err)
             {
@@ -114,11 +136,12 @@ namespace Bmp_ai
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string litera = label7.Text;
+            nw.SetTraining(litera, arr);
+            nw.SaveState();
+            picturebox_clean();
             button3.Enabled = !button3.Enabled;
             button4.Enabled = !button4.Enabled;
-            string litera = comboBox1.SelectedIndex >= 0 ? (string)comboBox1.Items[comboBox1.SelectedIndex] : comboBox1.Text;
-            nw.SaveState();
-            nw.SetTraining(litera, arr);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -135,7 +158,7 @@ namespace Bmp_ai
 
         private void button7_Click(object sender, EventArgs e)
         {
-            NeiroGraphUtils.ClearImage(pictureBox1);
+            picturebox_clean();
         }
 
         private void button5_patch_for_train(object sender, EventArgs e)
@@ -155,6 +178,13 @@ namespace Bmp_ai
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             nw.SaveState();
+        }
+
+        public void picturebox_clean()
+        {
+            NeiroGraphUtils.ClearImage(pictureBox1);
+            NeiroGraphUtils.ClearImage(pictureBox2);
+            NeiroGraphUtils.ClearImage(pictureBox3);
         }
     }
 }
